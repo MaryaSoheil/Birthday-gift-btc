@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0d">
+<title>Birthday BTC Gift</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#08090b;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
+.wrap{max-width:430px;margin:auto;min-height:100vh;padding:24px 18px 30px;display:flex;flex-direction:column;justify-content:center}
+.card{background:linear-gradient(145deg,#17181d,#0e0f12);border:1px solid #292a31;border-radius:28px;padding:28px;box-shadow:0 20px 60px #0008}
+.logo{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;background:#f7931a;color:#111;font-size:34px;font-weight:900}
+h1{text-align:center;font-size:24px;margin:0 0 8px}.sub{text-align:center;color:#9b9ca5;margin-bottom:26px}
+input{width:100%;padding:17px;border-radius:16px;border:1px solid #33353d;background:#090a0c;color:#fff;text-align:center;font-size:21px;letter-spacing:5px;outline:none}
+button{width:100%;margin-top:14px;padding:16px;border:0;border-radius:16px;background:#f7931a;color:#111;font-size:17px;font-weight:800}
+.err{color:#ff7070;text-align:center;min-height:22px;margin-top:10px}
+.hidden{display:none}.balance{text-align:center;font-size:40px;font-weight:850;margin:8px 0}.usd{text-align:center;color:#b9bac1;font-size:20px}.pill{display:inline-block;background:#25262c;color:#ddd;border-radius:999px;padding:7px 12px;font-size:13px;margin:18px auto}
+.message{margin-top:20px;padding:18px;border-radius:18px;background:#111217;border:1px solid #292a31;text-align:center;line-height:1.8;color:#eee}
+.note{text-align:center;color:#777984;font-size:11px;margin-top:18px;line-height:1.6}
+.smallbtn{background:#25262c;color:#fff;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="login" class="card">
+    <div class="logo">₿</div>
+    <h1>Birthday BTC Gift</h1>
+    <div class="sub">یک هدیه ویژه برای یک آدم خاص 🎁</div>
+    <input id="code" inputmode="numeric" maxlength="12" placeholder="کد ۱۲ رقمی">
+    <button onclick="unlock()">ورود به هدیه</button>
+    <div id="err" class="err"></div>
+    <div class="note">این برنامه یک والت نمایشی برای هدیه است و به شبکه بیت‌کوین متصل نیست.</div>
+  </div>
+
+  <div id="wallet" class="card hidden">
+    <div class="logo">₿</div>
+    <div class="sub">Birthday Gift Wallet</div>
+    <div class="pill">BITCOIN • GIFT EDITION</div>
+    <div class="balance">₿ 0.00000000</div>
+    <div class="usd">ارزش نمایشی هدیه: <b>$5,000</b></div>
+    <div class="message">
+      <b>این فقط شروعشه… ❤️</b><br>
+      هدیه واقعی در راهه.
+    </div>
+    <button class="smallbtn" onclick="lock()">قفل کردن والت</button>
+    <div class="note">موجودی و ارزش نمایش‌داده‌شده واقعی نیست و قابل ارسال یا برداشت نیست.</div>
+  </div>
+</div>
+<script>
+const GIFT_CODE="123456789012";
+function unlock(){
+  const v=document.getElementById('code').value.replace(/\D/g,'');
+  const e=document.getElementById('err');
+  if(v===GIFT_CODE){
+    document.getElementById('login').classList.add('hidden');
+    document.getElementById('wallet').classList.remove('hidden');
+    e.textContent='';
+  }else e.textContent='کد واردشده صحیح نیست.';
+}
+function lock(){
+  document.getElementById('wallet').classList.add('hidden');
+  document.getElementById('login').classList.remove('hidden');
+  document.getElementById('code').value='';
+}
+</script>
+</body>
+</html>
